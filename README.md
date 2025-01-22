@@ -40,6 +40,26 @@ Before you begin, ensure you have:
 4. Deploy the add-on:
 
 - Open Google Apps Script editor
-- Copy the contents of `Code.js`, `appsscript.json` and `sidebar.html`
+- Copy the contents of `Code.gs`, `appsscript.json` and `sidebar.html`
 - Deploy as a new deployment
 - Configure OAuth consent screen
+
+## Basic Setup (Document Analysis Only)
+
+- Copy the contents of Code.gs and sidebar.html to your Apps Script project
+- Add your Google AI Studio API key to Script Properties
+- Deploy and test the add-on
+
+## Advanced Setup (With Chat Integration)
+
+- Complete basic setup steps
+- Enable Google Chat API in Google Cloud Console
+- Configure OAuth consent screen
+- Add Chat space ID to Script Properties
+- Deploy with additional OAuth scopes
+
+## Usage
+
+- Open a Google Doc
+- Click "Extensions" > "AI Assistant" > "Open Assistant"
+
