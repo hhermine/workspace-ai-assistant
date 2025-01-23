@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    .container { padding: 15px; }
+    .button {
+      background: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px 0;
+      width: 100%;
+    }
+    .result-section {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>AI Assistant</h2>
+    <button class="button" onclick="analyzeDoc()">
+      Analyze Document
+    </button>
+    <div class="result-section">
+      <div class="section-title">Document Analysis</div>
+      <div id="analysisResult">No analysis yet</div>
+    </div>
+    <div class="result-section">
+      <div class="section-title">Related Chat Updates</div>
+      <div id="chatResult">No related updates yet</div>
+    </div>
+  </div>
+
+  <script>
+    function analyzeDoc() {
+      document.getElementById('analysisResult').innerHTML = 'Analyzing...';
+      document.getElementById('chatResult').innerHTML = 'Searching related updates...';
+      
+      google.script.run
+        .withSuccessHandler(showResults)
+        .withFailureHandler(showError)
+        .analyzeBoth();
+    }
+
+    function showResults(results) {
+      document.getElementById('analysisResult').innerHTML = results.analysis;
+      document.getElementById('chatResult').innerHTML = results.chatUpdates;
+    }
+
+    function showError(error) {
+      document.getElementById('analysisResult').innerHTML = 'Error: ' + error;
+      document.getElementById('chatResult').innerHTML = 'Error fetching updates';
+    }
+  </script>
+</body>
+</html>
